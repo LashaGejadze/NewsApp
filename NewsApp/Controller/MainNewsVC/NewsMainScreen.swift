@@ -9,20 +9,20 @@
 import UIKit
 
 class NewsMainScreen: UIViewController {
-    // Mark: IBOutlets
+    //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
     // Mark: NewsData
     var newsData = [dataObject]()
     
-    // Mark: View LifeCycle
+    ///MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchinfo() //fetch information
+        
     }
     
-    // Mark: IBAction
+    //MARK: - IBAction
     @IBAction func SearchButtonTapped(_ sender: UIButton) {
         let searchVC = self.storyboard?.instantiateViewController(withIdentifier: "xxSearchxx");self.navigationController?.pushViewController(searchVC!, animated: true)
     }
@@ -53,7 +53,7 @@ class NewsMainScreen: UIViewController {
     
     
 }
-// Mark: UITableViewDelegate,UITableViewDataSource
+//MARK: - UITableViewDelegate,UITableViewDataSource
 extension NewsMainScreen: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,18 +75,18 @@ extension NewsMainScreen: UITableViewDelegate, UITableViewDataSource{
         tableCell.tableImage.image = object.image
         tableCell.tableLabel.text = object.date
         tableCell.tableText.text = object.textfield
-        
+    
         return tableCell
     }
     
     
 }
-// Mark: UICollectionViewDelegate,UICollectionViewDataSource
+//MARK: - UICollectionViewDelegate,UICollectionViewDataSource
 extension NewsMainScreen: UICollectionViewDelegate, UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newsData.count
     }
@@ -95,6 +95,8 @@ extension NewsMainScreen: UICollectionViewDelegate, UICollectionViewDataSource{
         guard let items = collectionView.dequeueReusableCell(withReuseIdentifier: "qqCollectionCellpp", for: indexPath) as? NewsCollectionCell else{
             fatalError("Could not dequeue cell with identifier qqCollectionCellpp")
     }
+        
+
         let object = newsData[indexPath.row]
         
         items.collLabel.text = object.title

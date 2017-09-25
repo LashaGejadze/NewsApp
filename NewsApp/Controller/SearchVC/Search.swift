@@ -26,6 +26,7 @@ class Search: UITableViewController, UISearchResultsUpdating {
         self.tableView.tableHeaderView = self.searchController.searchBar
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
+        
     
         
     }
@@ -62,4 +63,5 @@ class Search: UITableViewController, UISearchResultsUpdating {
         
         return cell
     }
+   
 }
